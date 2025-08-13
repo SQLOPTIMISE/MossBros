@@ -1,0 +1,132 @@
+/* Styles for The Moss Brothers one-page site */
+:root{
+  --paper:#F1EAEA; /* light blush */
+  --ink:#111111; /* near black */
+  --blue:#3D5BFF; /* brand */
+  --grass:#2F7A4C;
+  --leaf:#56C271;
+  --cloud:#FFFFFF;
+  --radius:18px;
+  --border:2px;
+  --shadow-offset:6px;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  font-family: Inter, Segoe UI, Roboto, Arial, sans-serif;
+  color:var(--ink);
+  /* Full-bleed background image with a soft paper tint overlay for readability */
+  background:
+    linear-gradient(rgba(241,234,234,0.25), rgba(241,234,234,0.25)),
+    url('../assets/images/background.png');
+  background-size: auto, cover;
+  background-position: center;
+  background-repeat: repeat, no-repeat;
+  background-attachment: scroll;
+  line-height:1.6;
+}
+
+h1,h2,h3{font-family: Montserrat, Segoe UI, Roboto, Arial, sans-serif; font-weight:600; margin:0 0 .5rem}
+.section-title{font-size:1.75rem; margin-bottom:1rem}
+.lead{font-weight:600}
+.micro{opacity:.8; font-size:.95rem}
+
+.container{width:min(1100px, 92vw); margin-inline:auto}
+.section{padding:3rem 0; scroll-margin-top:80px}
+
+/* Bubble card */
+.bubble{
+  background:var(--paper);
+  border:var(--border) solid var(--ink);
+  border-radius:var(--radius);
+  box-shadow: var(--shadow-offset) var(--shadow-offset) 0 0 var(--ink);
+  padding:1rem 1.25rem;
+}
+
+/* Buttons */
+.btn{display:inline-block; text-decoration:none; border:var(--border) solid var(--ink); border-radius:999px; padding:.6rem 1rem; box-shadow: 3px 3px 0 0 var(--ink); transition: transform .06s ease;}
+.btn:focus{outline:3px solid currentColor; outline-offset:2px}
+.btn:active{transform: translate(1px,1px)}
+.btn-primary{background:var(--blue); color:#fff}
+.btn-secondary{background:var(--leaf); color:var(--ink)}
+
+/* Header / Nav */
+.site-header{position:sticky; top:0; z-index:1000; background:var(--cloud); border-bottom:1px solid #ddd}
+.nav{display:flex; align-items:center; gap:1rem; padding:.6rem 1rem}
+.wordmark{font-family: Montserrat, Segoe UI, Roboto, Arial, sans-serif; font-weight:600; color:var(--ink); text-decoration:none}
+.nav-menu{display:flex; list-style:none; margin:0; padding:0; gap:.8rem}
+.nav-menu a{color:var(--ink); text-decoration:none; padding:.4rem .6rem; border-radius:6px}
+.nav-menu a:hover{background:#f4f4f4}
+.nav-menu a:focus{outline:3px solid var(--blue); outline-offset:2px; background:#eef2ff}
+.nav-cta{margin-left:auto}
+
+/* Mobile nav toggle */
+.nav-toggle{display:none; width:40px; height:40px; border-radius:8px; border:var(--border) solid var(--ink); background:var(--paper); box-shadow: 3px 3px 0 0 var(--ink);}
+.nav-toggle:before{content:"≡"; font-size:20px}
+@media (max-width: 800px){
+  .nav-toggle{display:inline-block}
+  .nav-menu{display:none; position:absolute; left:0; right:0; top:56px; background:var(--cloud); padding:1rem; flex-direction:column; border-top:1px solid #eee}
+  .nav-menu.open{display:flex}
+  .nav-cta{display:none}
+}
+
+/* Hero */
+.hero-grid{display:grid; grid-template-columns: 1.1fr .9fr; gap:1.2rem; align-items:center}
+.hero-title{font-size: clamp(1.8rem, 3.5vw, 2.5rem)}
+.hero-media{display:flex; align-items:center; justify-content:center}
+.hero-media img{max-width:100%; height:auto; border-radius:var(--radius); border:var(--border) solid var(--ink); box-shadow: var(--shadow-offset) var(--shadow-offset) 0 0 var(--ink); background:#dbe7db}
+@media (max-width: 900px){
+  .hero-grid{grid-template-columns: 1fr}
+  .hero-media{order:-1}
+}
+
+/* Trust strip */
+.trust .trust-list{display:grid; grid-template-columns: repeat(4, 1fr); gap:.6rem; margin:0; padding:.6rem 1rem; list-style:none; text-align:center}
+@media (max-width: 700px){
+  .trust .trust-list{grid-template-columns: repeat(2, 1fr)}
+}
+
+/* Grids */
+.grid{display:grid; gap:1rem}
+.grid.two{grid-template-columns: repeat(2, 1fr)}
+.grid.three{grid-template-columns: repeat(3, 1fr)}
+@media (max-width: 900px){
+  .grid.two{grid-template-columns: 1fr}
+  .grid.three{grid-template-columns: 1fr}
+}
+
+/* Pricing */
+.pricing-table{display:flex; flex-direction:column; gap:.6rem}
+.pricing-row{display:flex; justify-content:space-between; align-items:center; gap:1rem; padding:.4rem 0; border-bottom:1px dashed #aaa}
+.pricing-row:last-child{border-bottom:none}
+.badge{display:inline-block; background:var(--leaf); color:var(--ink); border:var(--border) solid var(--ink); border-radius:999px; padding:.1rem .5rem; font-weight:600}
+.badge-outline{background:transparent}
+.note{margin:.5rem 0 0; font-size:.95rem; opacity:.9}
+
+/* FAQ */
+.accordion-item h3{margin:0}
+.accordion-trigger{display:block; width:100%; text-align:left; background:transparent; border:0; font: inherit; padding:.4rem 0; cursor:pointer}
+.accordion-trigger:focus{outline:3px solid var(--blue); border-radius:4px}
+
+/* Iframe booking */
+.iframe-wrap{position:relative; height:min(85vh, 1000px); border-radius:var(--radius); overflow:hidden}
+.iframe-wrap iframe{position:absolute; inset:0; width:100%; height:100%}
+
+/* Contact */
+.contact a{color:var(--ink)}
+.actions{display:flex; gap:.6rem; flex-wrap:wrap}
+.actions.center{justify-content:center}
+
+/* Footer */
+.site-footer{padding:2rem 0; background:#fafafa; border-top:1px solid #eee}
+.footer-legal{margin-top:1rem}
+
+/* Accessibility helpers */
+.skip-link{position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden}
+.skip-link:focus{position:static; width:auto; height:auto; padding:.4rem; background:#ff0}
+.sr-only{position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); border:0}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce){
+  *{animation:none !important; transition:none !important}
+}
